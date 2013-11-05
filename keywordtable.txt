@@ -1,0 +1,318 @@
+Specifying the device
+
+Keyword        Description                         Argument    Default    Unit
+--------------------------------------------------------------------------------
+x1                                                 Numeric     -1         r.u.
+               Set the x-coordinate of the lower  
+               left corner of the lamina. The unit
+               is relative to the other specified
+               distances.
+y1                                                 Numeric     -1         r.u.
+               Set the y-coordinate of the lower  
+               left corner of the lamina. The unit
+               is relative to the other specified
+               distances.
+x2                                                 Numeric      1         r.u.
+               Set the x-coordinate of the upper  
+               right corner of the lamina. The unit
+               is relative to the other specified
+               distances.
+y2                                                 Numeric      1         r.u.
+               Set the y-coordinate of the upper  
+               right corner of the lamina. The unit
+               is relative to the other specified
+               distances.
+cxp                                                Numeric     -0.5       r.u.
+               Set the x-coordinate of the center 
+               of the source contact (positive
+               contact). The unit is relative to
+               the other specified distances.
+cyp                                                Numeric      0         r.u.
+               Set the y-coordinate of the center 
+               of the source contact (positive
+               contact). The unit is relative to
+               the other specified distances.
+cxn                                                Numeric      0.5       r.u.
+               Set the x-coordinate of the center 
+               of the sink contact (negative
+               contact). The unit is relative to
+               the other specified distances.
+cyn                                                Numeric      0         r.u.
+               Set the y-coordinate of the center 
+               of the sink contact (negative
+               contact). The unit is relative to
+               the other specified distances.
+r                                                  Numeric      1e-4      r.u.
+               Set the radius of both contacts.   
+               The unit is relative to the other
+               specified distances.
+rp                                                 Numeric      1e-4      r.u.
+               Set the radius of the positive     
+               contact. The unit is relative to
+               the other specified distances.
+rn                                                 Numeric      1e-4      r.u.
+               Set the radius of the negative     
+               contact. The unit is relative to
+               the other specified distances.
+Rsq                                                Numeric      1         Ohm
+               Set the sheet resistance.          
+rg                                                 Numeric      1         Ohm
+               Set the resistance in the plane to  r2
+               ground.
+I                                                  Numeric      1         A
+               Set the injected current.          
+________________________________________________________________________________
+--------------------------------------------------------------------------------
+
+Specifying computational and output arguments
+
+Keyword        Description                         Argument    Default    Unit
+--------------------------------------------------------------------------------
+err                                                Numeric      1e-4      -
+               Maximum relative error in the      
+               current (i.e. degree of current
+               confinement on the lamina).
+err_off                                            Numeric      1e-2      -
+               Maximum error in offset            
+               calculation.
+nangle_check                                       Integer      40        -
+               To check whether a contact 
+	       circumference is indeed an 
+	       equipotential line the potential is 
+	       computed at this number of points
+	       along the circumference.
+NxM                                                Integer      1000000   -
+               Maximum product of n and m. Note   
+               that we count from -n to n and -m
+               to m so the maximum number of
+               sources plus sinks is 8 NxM. When
+               this number is reached the
+               calculation is broken off with a
+               convergence error.
+off_iter                                           Integer      100       -
+               Maximum number of iterations to    
+               compute the offsets of the sources
+               and sinks w.r.t. the center of a
+               contact.
+px1                                                Numeric      x1        r.u.
+               Set the x-coordinate of the first  
+               point spanning the computation
+               area. Used in combination with
+               field, potential, field-line,
+               4point.
+py1                                                Numeric      y1        r.u.
+               Set the y-coordinate of the first  
+               point spanning the computation
+               area. Used in combination with
+               field, potential, field-line,
+               4point.
+px2                                                Numeric      x2        r.u.
+               Set the x-coordinate of the second 
+               point spanning the computation
+               area. Used in combination with
+               field, potential, field-line,
+               4point.
+py2                                                Numeric      y2        r.u.
+               Set the y-coordinate of the second 
+               point spanning the computation
+               area. Used in combination with
+               field, potential, field-line,
+               4point.
+nx                                                 Integer      40        -
+               Set the number of steps in the     
+               x-direction between px1 and px2
+               (i.e. 0 steps is one point). Used
+               in combination with field,
+               potential, field-line.
+ny                                                 Integer      40        -
+               Set the number of steps in the     
+               y-direction between py1 and py2
+               (i.e. 0 steps is one point). Used
+               in combination with field,
+               potential, field-line.
+mesh                                               String       n.a.      n.a.
+               Read a mesh from a file (reads     
+               first two columns of an ASCII file
+               as x and y coordinates).
+               Alternative to a mesh
+               specification through nx, ny, px1,
+               px2, py1 and py2. Used in
+               combination with  field,
+               potential, field-line.
+file                                               String       n.a.      n.a.
+               Sets the current output file-name. 
+               A file-name needs to be specified
+               for the following commands:
+               contact_coord, source_coord, field,
+               potential, and fieldline.
+nangle                                             Integer      20        -
+               Field-lines start at a point on a  
+               circle around either a source or
+               sink. This parameter sets the
+               number field-lines that start at
+               equidistant points along the
+               circle.
+contact_coord                                      None         n.a.      n.a.
+               Instructs the program to print the 
+               coordinates of the positive and
+               negative contact and their images
+               in the area defined with px1, py1,
+               px2, and py2. Mostly intended
+               checking and debugging purposes.
+source_coord                                       None         n.a.      n.a.
+               Instructs the program to print the 
+               coordinates of the source, sink,
+               and their images in the area
+               defined with px1, py1, px2, and
+               py2. The difference with
+               contact_coord is that source_coord
+               includes the computed offsets of
+               sources and sinks w.r.t the centers
+               of the contacts. Mostly intended
+               checking and debugging purposes.
+offsets                                            None         n.a.      n.a.
+               Compute offsets of the source and  
+               sink positions to minimize the
+               potential variations along the
+               circumference of the contacts.
+               Without issuing this command the
+               sources and sinks are positioned
+               in the contact centers.
+resistance                                         None         n.a.      n.a.
+               Compute the resistance.            
+2point                                             None         n.a.      n.a.
+               Compute the voltage difference     
+               between the two contacts.
+4point                                             None         n.a.      n.a.
+               Compute the voltage difference     
+               between the coordinates (px1,py1)
+               and (px2,py2).
+field                                              None         n.a.      n.a.
+               Compute the electric field in the  
+               area defined with px1, py1, px2,
+               and py2. The resolution is set
+               with nx and ny.
+potential                                          None         n.a.      n.a.
+               Compute the potential in the area  
+               defined with px1, py1, px2, and
+               py2. The resolution is set with nx
+               and ny. 
+fieldline                                          None         n.a.      n.a.
+               Compute field-lines in the area    
+               defined with px1, py1, px2, and
+               py2. The accuracy is governed by
+               the parameter fl_acc.
+warp_offsets                                       None         n.a.      n.a.
+               Compute offsets of the source and  
+               sink positions to minimize the 
+	       potential variations along the 
+	       circumference of the contacts. 
+	       Unlike the command offsets, 
+	       warp_offsets uses the spatial 
+	       transformation with the complex 
+	       Jacobi sine amplitude function to 
+	       reduce the number of sources and 
+	       sinks. Performance and accuracy of 
+	       this command, however, tend to be 
+	       worse than the offsets command.
+	       Without issuing this command the 
+	       sources and sinks are positioned 
+	       in the contact centers.
+warp_resistance                                    None         n.a.      n.a.
+               Compute the resistance using the    
+	       closed form expressions based on a 
+	       spatial transformation with the 
+	       complex Jacobi sine amplitude 
+	       function.
+warp_2point                                        None         n.a.      n.a.
+               Compute the voltage difference     
+               between the two contacts using the 
+	       closed form expressions based on 
+	       a spatial transformation with the 
+	       complex Jacobi sine amplitude 
+	       function.
+warp_4point                                        None         n.a.      n.a.
+               Compute the voltage difference     
+               between  the coordinates (px1,py1)
+               and (px2,py2), using the closed 
+	       form expressions based on a spatial 
+	       transformation with the complex 
+	       Jacobi sine amplitude function.
+warp_field                                         None         n.a.      n.a.
+               Compute the electric field using   
+	       the closed form expressions based 
+	       on a spatial transformation with 
+	       the complex Jacobi sine amplitude 
+	       function. The field is computed 
+	       in the area defined with px1, py1, 
+	       px2,and py2. The resolution is set 
+	       with nx and ny.
+warp_potential                                     None         n.a.      n.a.
+               Compute the potential using the     
+	       closed form expressions based on a 
+	       spatial transformation with the 
+	       complex Jacobi sine amplitude 
+	       function. The potentials are 
+	       computed in the area defined with 
+	       px1, py1, px2, and py2. The 
+	       resolution is set with nx and ny. 
+warp_fieldline                                     None         n.a.      n.a.
+               Compute field-lines in the area   
+               defined with px1, py1, px2, and
+               py2. The accuracy is governed by
+               the parameter fl_acc. The fields 
+	       are computed with the closed form 
+	       expressions. 
+bess_offsets                                       None         n.a.      n.a.
+               Compute offsets of the source and  
+               sink positions using the modified 
+	       bessel function potentials to 
+	       minimize the potential variations 
+	       along the circumference of the 
+	       contacts. Without issuing this 
+	       command the sources and sinks are 
+	       positioned in the contact centers.
+bess_fast                                          None         n.a.      n.a.
+               Initialize the bessel calculations
+               with fewer sources. This will have 
+	       repercussions on accuracy but 
+	       often also speeds things up quite 
+	       a bit. 
+bess_field                                         None         n.a.      n.a.
+               Compute the electric field using   
+               the modified bessel funktion 
+	       solution in the area defined with 
+	       px1, py1, px2,and py2. The 
+	       resolution is set with nx and ny.
+bess_potential Compute the potential using the     None         n.a.      n.a.
+               modified bessel function solution
+	       in the area defined with px1, py1, 
+	       px2, and py2. The resolution is 
+	       set with nx and ny. 
+bess_fieldline Compute field-lines using the       None         n.a.      n.a.
+               modified bessel function solution
+	       in the area defined with px1, py1, 
+	       px2, and py2. The accuracy is 
+	       governed by the parameter fl_acc.
+fl_acc                                             Numeric      5e-3      -
+               Accuracy of the field-line routine.
+________________________________________________________________________________
+--------------------------------------------------------------------------------
+
+Setting verbose level (only affects output to stdout)
+
+Keyword        Description                         Argument    Default
+--------------------------------------------------------------------------------
+out_quiet                                          None        out_normal
+               Only give out essential information
+               to stdout.
+out_normal                                         None        out_normal
+               Normal output level.               
+out_verbose                                        None        out_normal
+               Give out additional information    
+               such as the exact positions of the
+               source and sink, potentials at the
+               contacts, etc.
+out_debug                                          None        out_normal
+               Give out even more information.
+_________________________________________________________________________________
