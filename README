@@ -26,6 +26,8 @@ impact of local defects (shunts) on the performance of a thin-film solar cell in
 B. E. Pieters, and U. Rau, "A new 2D model for the electrical potential in a cell stripe in thin-film solar modules 
 including local defects", Prog. Photovolt: Res. Appl. (2013), DOI: 10.1002/pip.2436
 
+This program was developed with supported from the EU FP7 project SOPHIA, grant no. 262533
+
 Binaries are available under:
 https://github.com/IEK-5/SourceField/releases/latest
 
